@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grădina de la țară | Jurnal Complet</title>
+    <title>Grădina de la țară | Jurnal 2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -21,7 +21,7 @@
             margin: 0;
             background-color: var(--bg);
             color: var(--text);
-            overflow-x: hidden;
+            line-height: 1.6;
         }
 
         /* --- NAVIGAȚIE --- */
@@ -35,13 +35,11 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            height: 60px;
         }
 
         .logo { font-weight: bold; color: var(--nature-green); font-size: 1.4rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-
-        .nav-links { list-style: none; display: flex; gap: 15px; margin: 0; transition: 0.4s ease; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; padding: 10px; border-radius: 8px; font-size: 0.95rem; }
+        .nav-links { list-style: none; display: flex; gap: 15px; margin: 0; transition: 0.4s; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; padding: 10px; border-radius: 8px; }
         .nav-links a:hover { background: var(--nature-green); color: white; }
 
         .burger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--nature-green); }
@@ -49,16 +47,16 @@
         @media (max-width: 768px) {
             .burger { display: block; }
             .nav-links {
-                position: fixed; right: -100%; top: 0; height: 100vh; width: 75%;
+                position: fixed; right: -100%; top: 60px; height: calc(100vh - 60px); width: 80%;
                 background: var(--card-bg); flex-direction: column; align-items: center;
-                justify-content: center; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                padding-top: 40px; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             }
             .nav-links.active { right: 0; }
         }
 
         /* --- HERO --- */
         .hero {
-            height: 60vh;
+            height: 40vh;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -66,42 +64,33 @@
         }
 
         /* --- POSTĂRI --- */
-        section { padding: 80px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        section { padding: 60px 8%; }
+        .grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 900px; margin: 0 auto; }
+        .card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .post-date { font-size: 0.9rem; color: var(--earth); font-weight: bold; margin-bottom: 15px; display: block; }
         
-        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
-        .post-date { font-size: 0.85rem; color: var(--earth); font-weight: bold; display: block; margin-bottom: 10px; }
-        
-        .full-content { 
-            display: none; 
-            margin-top: 15px; 
-            padding-top: 15px; 
-            border-top: 1px dashed #eee; 
-            animation: fadeIn 0.6s ease-in-out; 
-        }
+        .full-content { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #ddd; animation: fadeIn 0.8s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .read-more-btn {
-            background: none; border: 2px solid var(--nature-green); color: var(--nature-green);
-            padding: 8px 20px; border-radius: 25px; cursor: pointer; font-weight: bold;
-            margin-top: 15px; transition: 0.3s;
-        }
+        .read-more-btn { background: none; border: 2px solid var(--nature-green); color: var(--nature-green); padding: 10px 25px; border-radius: 25px; cursor: pointer; font-weight: bold; margin-top: 20px; transition: 0.3s; }
         .read-more-btn:hover { background: var(--nature-green); color: white; }
 
         /* --- GALERIE --- */
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
-        .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 15px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+        .gallery img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: 0.3s; }
+        .gallery img:hover { transform: scale(1.05); }
+
+        /* Lightbox */
+        #lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        #lightbox img { max-width: 90%; max-height: 80%; border-radius: 10px; }
+        .close-lb { position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; cursor: pointer; }
 
         /* --- CONTACT --- */
         .contact-card { max-width: 600px; margin: 0 auto; background: white; padding: 35px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .form-control { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 1rem; }
+        .form-control { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-family: inherit; }
         .btn-submit { background: var(--nature-green); color: white; border: none; width: 100%; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
 
-        footer { text-align: center; padding: 50px; background: #2d3436; color: white; margin-top: 50px; }
+        footer { text-align: center; padding: 40px; background: #2d3436; color: white; margin-top: 50px; }
     </style>
 </head>
 <body>
@@ -119,107 +108,116 @@
         </div>
     </nav>
 
+    <div id="lightbox" onclick="closeLightbox()">
+        <span class="close-lb">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
     <section id="acasa" class="hero" style="padding: 0;">
-        <h1>Grădina de la țară</h1>
-        <p>Povestea pământului povestită cu dragoste.</p>
+        <h1>Jurnalul unei Grădini vii</h1>
+        <p>Pasiune, răbdare și rod bogat direct de la țară.</p>
     </section>
 
     <section id="postari">
-        <h2 style="color: var(--nature-green);"><i class="fas fa-pen-fancy"></i> Jurnalul Grădinarului</h2>
+        <h2 style="color: var(--nature-green); text-align: center; margin-bottom: 50px;">Articole de Sezon</h2>
         <div class="grid">
             
             <article class="card">
-                <span class="post-date"><i class="far fa-calendar-alt"></i> 26 Februarie 2026</span>
-                <h3>Pregătirea semințelor</h3>
-                <p>Secretul unei recolte timpurii stă în modul în care trezim semințele la viață. Înainte de plantare...</p>
-                
-                <div class="full-content" id="post1">
-                    <p>...le putem lăsa la înmuiat în apă călduță timp de câteva ore. Acest proces hidratrează coaja și accelerează germinarea. Atenție sporită la temperatura camerei!</p>
+                <span class="post-date"><i class="far fa-calendar-alt"></i> 1 Martie 2026</span>
+                <h3>Primele semne de viață în straturi</h3>
+                <div class="excerpt">
+                    <p>Odată cu intrarea în luna martie, Grădina trece de la planificare la acțiune în aer liber. Este timpul să profităm de umiditatea solului și să scoatem primele unelte pentru semănăturile timpurii.</p>
                 </div>
-                <button class="read-more-btn" onclick="togglePost('post1', this)">Citește tot</button>
+                <div class="full-content" id="post1">
+                    <p>Martie este luna în care pământul se trezește cu adevărat, iar grădinarul trebuie să fie vigilent. Deși nopțile mai pot aduce înghețuri ușoare, solul păstrează umiditatea prețioasă din zăpezile topite, condiție ideală pentru culturile „de frig”. Înainte de a începe, verificați starea solului: dacă pământul se lipește de cizmă ca lutul, este prea ud și trebuie să mai așteptați. Lucrarea unui pământ prea umed distruge structura acestuia, formând bulgări tari care se vor usca precum piatra la vară.</p>
+                    <p>Primele plante care pot fi semănate direct în grădină sunt mazărea, ceapa, usturoiul, morcovul, pătrunjelul și spanacul. Mazărea este vedeta lunii martie; semințele ei germinează la doar câteva grade peste zero și nu se tem de brumă. Mai mult, mazărea are proprietatea fantastică de a fixa azotul în sol, pregătind terenul pentru culturile mai pretențioase care vor veni în mai. Ceapa și usturoiul se plantează acum sub formă de arpagic sau căței, asigurându-vă o recoltă timpurie de verdețuri pline de vitamine.</p>
+                    <p>Tot acum este momentul să semănăm ridichile de lună și salata verde. Acestea cresc foarte repede și ne vor oferi primele satisfacții culinare în doar câteva săptămâni. Nu uitați să curățați straturile de resturile vegetale de anul trecut și să adăugați puțin compost matur acolo unde solul pare epuizat. Martie este o lună de muncă grea, adesea în noroi și vânt, dar sentimentul de a vedea primele rânduri verzi aliniate perfect în grădină este bucuria supremă a oricărui om care iubește pământul.</p>
+                </div>
+                <button class="read-more-btn" onclick="togglePost('post1', this)">Citește tot articolul</button>
             </article>
 
             <article class="card">
-    <span class="post-date"><i class="far fa-calendar-alt"></i> 22 Februarie 2026</span>
-    <h3>Februarie la țară: Trezirea discretă a pământului</h3>
-    
-    <div class="excerpt">
-        <p>Luna februarie la țară este o perioadă a contrastelor, un prag fragil între somnul adânc al iernii și prima suflare a primăverii. Deși calendaristic suntem încă în anotimpul rece, ritmul satului se schimbă vizibil.</p>
-    </div>
+                <span class="post-date"><i class="far fa-calendar-alt"></i> 28 Februarie 2026</span>
+                <h3>Magia răsadurilor: Din sămânță în farfurie</h3>
+                <div class="excerpt">
+                    <p>Pe pervazul ferestrelor viața a început deja să pulseze. Februarie este luna în care transformăm bucătăria într-o mică seră, punând bazele viitoarei grădini de legume.</p>
+                </div>
+                <div class="full-content" id="post2">
+                    <p>Succesul unei recolte de roșii gustoase depinde enorm de vigurozitatea răsadului. Totul începe cu alegerea unui substrat de calitate. Pământul de grădină este adesea prea dens și poate conține spori de ciuperci care ucid tinerii lăstari. Folosiți un amestec pe bază de turbă fină, care reține apa dar lasă rădăcinile să respire.</p>
+                    <p>Semănatul necesită răbdare și precizie. Semințele mici nu se îngroapă adânc; regula generală este o adâncime de două ori cât mărimea seminței. Odată semănate, tăvițele au nevoie de căldură constantă pentru a germina. Dar marea provocare apare după ce plantele au răsărit: lumina. Dacă răsadurile devin lungi și subțiri, înseamnă că „aleargă” disperate după lumină. Rotiți tăvițele zilnic și asigurați-le cel mai însorit loc din casă.</p>
+                    <p>Udarea trebuie făcută cu mare grijă, preferabil cu un pulverizator fin și apă la temperatura camerei. Apa rece direct de la robinet provoacă un șoc termic care poate opri creșterea plantelor. Îngrijirea răsadurilor este un exercițiu de disciplină zilnică ce ne răsplătește prin observarea miracolului vieții care se trezește la comandă pe propriul nostru pervaz, oferindu-ne promisiunea unei veri pline de savoare.</p>
+                </div>
+                <button class="read-more-btn" onclick="togglePost('post2', this)">Citește tot articolul</button>
+            </article>
 
-    <div class="full-content" id="post2">
-        <p>Diminețile încep adesea sub o mantie de chiciură sclipitoare, dar soarele, acum mai sus pe cer, are o forță nouă care începe să topească zăpada, lăsând la vedere pământul negru și reavăn.</p>
-        
-        <p>Pentru un grădinar, februarie este timpul când „planul de atac” prinde contur. În liniștea odăilor, se sortează semințele păstrate cu grijă. Mirosul de pământ proaspăt adus în tăvițe inundă pervazurile, semn că viața este gata să izbucnească. Roșiile și ardeii își încep călătoria aici, la adăpost, în timp ce afară vântul încă mai șuieră tăios printre ramuri.</p>
-        
-        <p>Chiar dacă nopțile rămân geroase, ziua se lungește. Februarie ne învață răbdarea: ne arată că, sub pojghița de gheață, natura pulsează deja cu nerăbdare. Este luna speranței, timpul în care fiecare gest reprezintă o promisiune pentru belșugul verii ce va veni.</p>
-    </div>
-    
-    <button class="read-more-btn" onclick="togglePost('post2', this)">Citește tot</button>
-</article>
-
+            <article class="card">
+                <span class="post-date"><i class="far fa-calendar-alt"></i> 27 Februarie 2026</span>
+                <h3>Arta tăierilor de primăvară</h3>
+                <div class="excerpt">
+                    <p>Finalul lui februarie marchează momentul critic pentru posesorii de pomi fructiferi. Deși multora le este teamă să intervină, tăierea este un act de regenerare și sănătate.</p>
+                </div>
+                <div class="full-content" id="post3">
+                    <p>Fără tăieri periodice, un pom își consumă energia inutil pentru a menține ramuri bătrâne sau epuizate. Primul pas este curățarea sanitară: eliminăm ramurile moarte, cele bolnave sau cele rupte de zăpadă. O ramură bolnavă lăsată în coroană funcționează ca un rezervor de infecție pentru întregul pom.</p>
+                    <p>Apoi, aerisim centrul coroanei. Orice ramură care crește spre interior trebuie eliminată. Lăstarii verticali numiți „lăcomari” trebuie tăiați deoarece aceștia nu rodesc, ci doar consumă seva. O coroană corectă are formă de cupă, permițând soarelui să ajungă la fiecare fruct. Folosiți doar unelte bine ascuțite și dezinfectați lama cu alcool după fiecare pom pentru a nu răspândi bolile. Pentru ramurile groase, folosiți un mastic cicatrizant. Această muncă este fundația recoltei de la vară.</p>
+                </div>
+                <button class="read-more-btn" onclick="togglePost('post3', this)">Citește tot articolul</button>
+            </article>
 
         </div>
     </section>
 
     <section id="imagini" style="background: #eef2ee;">
-        <h2 style="color: var(--nature-green);">Momente din natură</h2>
+        <h2 style="text-align: center; color: var(--nature-green);">Galerie Foto</h2>
         <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&w=400&q=80">
-            <img src="https://images.unsplash.com/photo-1589485488331-4b36049182db?auto=format&fit=crop&w=400&q=80">
-            <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=400&q=80">
-            <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=400&q=80">
+            <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&w=800" onclick="openLightbox(this.src)">
+            <img src="https://images.unsplash.com/photo-1589485488331-4b36049182db?auto=format&fit=crop&w=800" onclick="openLightbox(this.src)">
+            <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=800" onclick="openLightbox(this.src)">
+            <img src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=800" onclick="openLightbox(this.src)">
         </div>
     </section>
 
     <section id="contact">
-        <h2 style="text-align: center; color: var(--nature-green);">Hai să stăm de vorbă</h2>
         <div class="contact-card">
+            <h2 style="text-align: center; color: var(--nature-green);">Contactează-mă</h2>
             <form action="https://formspree.io/f/maqdvkpn" method="POST">
-                <input type="hidden" name="_next" value="https://marius.github.io/index.html#contact">
-                
-                <label>Nume</label>
-                <input type="text" name="name" class="form-control" required placeholder="Numele tău">
-                
-                <label>Email</label>
-                <input type="email" name="email" class="form-control" required placeholder="email@exemplu.ro">
-                
-                <label>Mesajul tău</label>
-                <textarea name="message" class="form-control" rows="5" required placeholder="Ce vrei să îmi transmiți?"></textarea>
-
-                <button type="submit" class="btn-submit">Trimite Mesajul</button>
+                <input type="hidden" name="_next" value="https://marius.github.io/index.html">
+                <input type="text" name="name" class="form-control" placeholder="Numele tău" required>
+                <input type="email" name="email" class="form-control" placeholder="Emailul tău" required>
+                <textarea name="message" class="form-control" rows="5" placeholder="Mesajul tău..." required></textarea>
+                <button type="submit" class="btn-submit">Trimite</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Grădina de la țară | Cultivăm pasiuni</p>
-        <div style="font-size: 1.5rem; display: flex; justify-content: center; gap: 20px; margin-top: 15px;">
-            <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
-        </div>
+        <p>&copy; 2026 Grădina de la țară | Un proiect din suflet</p>
     </footer>
 
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            const icon = document.getElementById('burgerIcon');
             menu.classList.toggle('active');
-            if(menu.classList.contains('active')) {
-                icon.classList.replace('fa-bars', 'fa-times');
-            } else {
-                icon.classList.replace('fa-times', 'fa-bars');
-            }
+            document.getElementById('burgerIcon').classList.toggle('fa-times');
         }
 
         function togglePost(postId, btn) {
             const post = document.getElementById(postId);
             if (post.style.display === "block") {
                 post.style.display = "none";
-                btn.textContent = "Citește tot";
+                btn.textContent = "Citește tot articolul";
             } else {
                 post.style.display = "block";
                 btn.textContent = "Arată mai puțin";
             }
+        }
+
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
         }
     </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grădina de la țară | Blog Oficial</title>
+    <title>Grădina de la țară | Jurnal Complet</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -40,56 +40,66 @@
 
         .logo { font-weight: bold; color: var(--nature-green); font-size: 1.4rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
 
-        .nav-links { list-style: none; display: flex; gap: 20px; margin: 0; transition: 0.4s ease; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; padding: 10px; border-radius: 8px; }
+        .nav-links { list-style: none; display: flex; gap: 15px; margin: 0; transition: 0.4s ease; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; padding: 10px; border-radius: 8px; font-size: 0.95rem; }
         .nav-links a:hover { background: var(--nature-green); color: white; }
 
         .burger { display: none; cursor: pointer; font-size: 1.5rem; color: var(--nature-green); }
 
-        /* MOBIL */
         @media (max-width: 768px) {
             .burger { display: block; }
             .nav-links {
-                position: fixed; right: -100%; top: 0; height: 100vh; width: 70%;
+                position: fixed; right: -100%; top: 0; height: 100vh; width: 75%;
                 background: var(--card-bg); flex-direction: column; align-items: center;
                 justify-content: center; box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             }
             .nav-links.active { right: 0; }
         }
 
-        /* --- SECTIUNI --- */
-        section { padding: 80px 10%; }
-
+        /* --- HERO --- */
         .hero {
-            height: 70vh;
+            height: 60vh;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&w=1200&q=80');
             background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             color: white; text-align: center; border-radius: 0 0 30px 30px;
         }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
+        /* --- POSTĂRI --- */
+        section { padding: 80px 10%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .post-date { font-size: 0.85rem; color: var(--earth); font-weight: bold; display: block; margin-bottom: 10px; }
+        
+        .full-content { 
+            display: none; 
+            margin-top: 15px; 
+            padding-top: 15px; 
+            border-top: 1px dashed #eee; 
+            animation: fadeIn 0.6s ease-in-out; 
+        }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .read-more-btn {
+            background: none; border: 2px solid var(--nature-green); color: var(--nature-green);
+            padding: 8px 20px; border-radius: 25px; cursor: pointer; font-weight: bold;
+            margin-top: 15px; transition: 0.3s;
+        }
+        .read-more-btn:hover { background: var(--nature-green); color: white; }
+
+        /* --- GALERIE --- */
         .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
-        .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 12px; }
+        .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 15px; }
 
-        /* --- FORMULAR CONTACT --- */
-        .contact-container {
-            max-width: 600px; margin: 0 auto; background: white; padding: 30px;
-            border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        .form-control {
-            width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd;
-            border-radius: 10px; font-size: 1rem; box-sizing: border-box;
-        }
-
-        .btn-submit {
-            background: var(--nature-green); color: white; border: none; width: 100%;
-            padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem;
-        }
+        /* --- CONTACT --- */
+        .contact-card { max-width: 600px; margin: 0 auto; background: white; padding: 35px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .form-control { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 1rem; }
+        .btn-submit { background: var(--nature-green); color: white; border: none; width: 100%; padding: 15px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
 
         footer { text-align: center; padding: 50px; background: #2d3436; color: white; margin-top: 50px; }
     </style>
@@ -109,27 +119,42 @@
         </div>
     </nav>
 
-    <section id="acasa" class="hero">
-        <h1 style="font-size: 3rem; margin: 0;">Grădina de la țară</h1>
-        <p style="font-size: 1.2rem;">Povestea pământului, pas cu pas.</p>
+    <section id="acasa" class="hero" style="padding: 0;">
+        <h1>Grădina de la țară</h1>
+        <p>Povestea pământului povestită cu dragoste.</p>
     </section>
 
     <section id="postari">
-        <h2 style="color: var(--nature-green); border-left: 5px solid var(--nature-green); padding-left: 15px;">Postări recente</h2>
+        <h2 style="color: var(--nature-green);"><i class="fas fa-pen-fancy"></i> Jurnalul Grădinarului</h2>
         <div class="grid">
-            <div class="card">
-                <h3><i class="fas fa-seedling"></i> Calendar Martie</h3>
-                <p>Ce semințe punem la germinat și cum pregătim straturile...</p>
-            </div>
-            <div class="card">
-                <h3><i class="fas fa-apple-alt"></i> Livada tânără</h3>
-                <p>Tăierile de primăvară: cum să ajuți pomii să crească sănătoși.</p>
-            </div>
+            
+            <article class="card">
+                <span class="post-date"><i class="far fa-calendar-alt"></i> 26 Februarie 2026</span>
+                <h3>Pregătirea semințelor</h3>
+                <p>Secretul unei recolte timpurii stă în modul în care trezim semințele la viață. Înainte de plantare...</p>
+                
+                <div class="full-content" id="post1">
+                    <p>...le putem lăsa la înmuiat în apă călduță timp de câteva ore. Acest proces hidratrează coaja și accelerează germinarea. Atenție sporită la temperatura camerei!</p>
+                </div>
+                <button class="read-more-btn" onclick="togglePost('post1', this)">Citește tot</button>
+            </article>
+
+            <article class="card">
+                <span class="post-date"><i class="far fa-calendar-alt"></i> 22 Februarie 2026</span>
+                <h3>Pământul ideal</h3>
+                <p>Nu toate tipurile de sol sunt potrivite pentru răsaduri. Un amestec bun trebuie să fie...</p>
+                
+                <div class="full-content" id="post2">
+                    <p>...afânat, bogat în turbă și cu un drenaj excelent. Evită pământul de grădină direct în tăvițe, deoarece se poate tasa prea tare și sufocă rădăcinile tinere.</p>
+                </div>
+                <button class="read-more-btn" onclick="togglePost('post2', this)">Citește tot</button>
+            </article>
+
         </div>
     </section>
 
     <section id="imagini" style="background: #eef2ee;">
-        <h2 style="color: var(--nature-green);">Galerie Foto</h2>
+        <h2 style="color: var(--nature-green);">Momente din natură</h2>
         <div class="gallery">
             <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&w=400&q=80">
             <img src="https://images.unsplash.com/photo-1589485488331-4b36049182db?auto=format&fit=crop&w=400&q=80">
@@ -139,21 +164,19 @@
     </section>
 
     <section id="contact">
-        <h2 style="text-align: center; color: var(--nature-green);">Trimite-mi un mesaj</h2>
-        <div class="contact-container">
+        <h2 style="text-align: center; color: var(--nature-green);">Hai să stăm de vorbă</h2>
+        <div class="contact-card">
             <form action="https://formspree.io/f/maqdvkpn" method="POST">
-                
                 <input type="hidden" name="_next" value="https://marius.github.io/index.html#contact">
-                <input type="hidden" name="_subject" value="Mesaj nou Blog Grădină">
-
-                <label>Numele tău</label>
-                <input type="text" name="name" class="form-control" placeholder="Ex: Andrei" required>
-
+                
+                <label>Nume</label>
+                <input type="text" name="name" class="form-control" required placeholder="Numele tău">
+                
                 <label>Email</label>
-                <input type="email" name="email" class="form-control" placeholder="adresa@mail.com" required>
-
-                <label>Mesaj / Comentariu</label>
-                <textarea name="message" class="form-control" rows="5" placeholder="Scrie aici..." required></textarea>
+                <input type="email" name="email" class="form-control" required placeholder="email@exemplu.ro">
+                
+                <label>Mesajul tău</label>
+                <textarea name="message" class="form-control" rows="5" required placeholder="Ce vrei să îmi transmiți?"></textarea>
 
                 <button type="submit" class="btn-submit">Trimite Mesajul</button>
             </form>
@@ -161,7 +184,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Grădina de la țară</p>
+        <p>&copy; 2026 Grădina de la țară | Cultivăm pasiuni</p>
         <div style="font-size: 1.5rem; display: flex; justify-content: center; gap: 20px; margin-top: 15px;">
             <i class="fab fa-instagram"></i> <i class="fab fa-facebook"></i>
         </div>
@@ -178,7 +201,17 @@
                 icon.classList.replace('fa-times', 'fa-bars');
             }
         }
+
+        function togglePost(postId, btn) {
+            const post = document.getElementById(postId);
+            if (post.style.display === "block") {
+                post.style.display = "none";
+                btn.textContent = "Citește tot";
+            } else {
+                post.style.display = "block";
+                btn.textContent = "Arată mai puțin";
+            }
+        }
     </script>
 </body>
 </html>
-

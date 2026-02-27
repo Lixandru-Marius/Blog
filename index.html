@@ -61,7 +61,7 @@
             right: 30px;
             background-color: #25d366;
             color: white;
-            padding: 12px 20px;
+            padding: 20px 20px;
             border-radius: 50px;
             display: flex;
             align-items: center;
@@ -69,6 +69,15 @@
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 2000;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float i { font-size: 26px; margin-right: 10px; }
+        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; color: white; } 
+
+        @media (max-width: 600px) {
+            .whatsapp-float { bottom: 20px; right: 20px; padding: 15px; }
+            
+        
         }
 
         /* --- CONTINUT --- */
@@ -161,7 +170,7 @@
 <body>
 
     <a href="https://wa.me/40729075037?text=Buna%20ziua!%20Vin%20de%20pe%20site." class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i> <span>WhatsApp</span>
+        <i class="fab fa-whatsapp"></i> 
     </a>
 
     <nav>

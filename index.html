@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grădina de la țară | Jurnal Complet 2026</title>
     
-    <meta name="description" content="Jurnal complet de grădinărit 2026. Sfaturi despre tăierea pomilor fructiferi, calendarul semănăturilor de martie și ghid practic pentru răsaduri viguroase.">
-    <meta name="keywords" content="gradina de la tara, jurnal gradinarit 2026, semanat martie, taiere pomi fructiferi, rasaduri rosii, sfaturi agricultura">
+    <meta name="description" content="Jurnal complet de grădinărit 2026. Sfaturi despre tăierea pomilor fructiferi, calendarul semănăturilor și răsaduri.">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -26,9 +25,36 @@
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrează tot corpul paginii */
         }
 
-        /* --- STIL BUTON WHATSAPP --- */
+        /* --- NAVIGAȚIE --- */
+        nav {
+            background: var(--card-bg);
+            padding: 10px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .logo { font-weight: bold; color: var(--nature-green); font-size: 1.4rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .nav-links { list-style: none; display: flex; gap: 15px; margin: 0; padding: 0; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; padding: 5px 10px; font-size: 0.9rem; }
+
+        @media (min-width: 600px) {
+            nav { flex-direction: row; justify-content: space-between; }
+        }
+
+        /* --- BUTON WHATSAPP --- */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -43,113 +69,99 @@
             font-weight: bold;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 2000;
-            transition: all 0.3s ease;
-        }
-        .whatsapp-float i { font-size: 24px; margin-right: 10px; }
-        .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; color: white; }
-
-        @media (max-width: 600px) {
-            .whatsapp-float { bottom: 20px; right: 20px; padding: 15px; }
-            .whatsapp-float span { display: none; }
-            .whatsapp-float i { margin-right: 0; }
         }
 
-        /* --- NAVIGAȚIE --- */
-        nav {
-            background: var(--card-bg);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            flex-wrap: wrap;
+        /* --- CONTINUT --- */
+        section { 
+            padding: 40px 0; 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
         }
 
-        .logo { font-weight: bold; color: var(--nature-green); font-size: 1.4rem; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .nav-links { list-style: none; display: flex; gap: 10px; margin: 0; padding: 0; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; padding: 8px 12px; border-radius: 8px; font-size: 0.9rem; }
+        .grid { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 30px; 
+            width: 95%; 
+            max-width: 850px; 
+        }
 
-        @media (max-width: 600px) {
-            nav { justify-content: center; }
-            .logo { width: 100%; justify-content: center; margin-bottom: 10px; }
-            .nav-links { width: 100%; justify-content: center; }
+        .card { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+
+        /* --- IMAGINI ARTICOLE CENTRATE --- */
+        .post-image { 
+            width: 80%; 
+            max-width: 450px; 
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 15px; 
+            margin: 20px auto; 
+            display: block; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
+
+        /* --- ASCUNDEREA CONTINUTULUI (FIX) --- */
+        .full-content { 
+            display: none; /* Aceasta linie previne deschiderea automata */
+            margin-top: 25px; 
+            padding-top: 25px; 
+            border-top: 1px dashed #ddd; 
+        }
+
+        .read-more-btn { 
+            background: var(--nature-green); 
+            color: white; 
+            border: none; 
+            padding: 12px 30px; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            margin-top: 20px; 
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero {
+            width: 100%;
             height: 35vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("Imagini/antet.png");
             background-size: cover; 
             background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center;
+        }
+
+        /* --- GALERIE CENTRATA --- */
+        .gallery { 
             display: flex; 
-            flex-direction: column; 
+            flex-wrap: wrap; 
             justify-content: center; 
-            align-items: center;
-            color: white; 
-            text-align: center; 
-            border-radius: 0 0 25px 25px;
+            gap: 15px; 
+            padding: 20px;
         }
+        .gallery img { width: 140px; height: 140px; object-fit: cover; border-radius: 15px; cursor: pointer; }
 
-        .table-of-contents { padding: 30px 5% 0 5%; text-align: center; }
-        .toc-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
-        .toc-btn {
-            background: white; color: var(--nature-green); border: 2px solid var(--nature-green);
-            padding: 8px 16px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 0.85rem; transition: 0.3s;
-        }
-        .toc-btn:hover { background: var(--nature-green); color: white; }
+        #lightbox { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        #lightbox img { max-width: 90%; max-height: 85%; }
 
-        section { padding: 40px 0%; }
-      .grid { 
-    display: grid; 
-    grid-template-columns: 1fr; 
-    gap: 30px; 
-    max-width: 100%; /* Schimbă de la 850px la 100% pentru a ocupa tot ecranul */
-    margin: 0 auto; 
-}
-
-.card { 
-    background: white; 
-    padding: 20px; 
-    border-radius: 20px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
-    width: auto; /* Forțează cardul să fie lat */
-    box-sizing: border-box; /* Previne ieșirea din ecran din cauza padding-ului */
-}
- 
-        
-       .post-image { 
-    width: 60%; 
-    max-width: 400px; 
-    height: 250px;       /* Am setat o înălțime fixă mai mică */
-    object-fit: cover;   /* Împiedică deformarea (turtirea) pozei */
-    border-radius: 15px; 
-    margin: 20px auto; 
-    display: block; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
-}
-
-}
-
-        .full-content { display: none; margin-top: 25px; padding-top: 25px; border-top: 1px dashed #ddd; }
-
-        .read-more-btn { background: var(--nature-green); color: white; border: none; padding: 12px 30px; border-radius: 50px; cursor: pointer; font-weight: bold; margin-top: 20px; }
-
-        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; }
-        .gallery img { width: 100%; height: 180px; object-fit: cover; border-radius: 15px; cursor: pointer; transition: 0.3s; }
-
-        #lightbox { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
-        #lightbox img { max-width: 90%; max-height: 85%; border-radius: 10px; }
-
-        footer { text-align: center; padding: 40px; background: #2d3436; color: white; margin-top: 50px; }
+        footer { width: 100%; text-align: center; padding: 40px; background: #2d3436; color: white; box-sizing: border-box; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40729075037?text=Bună%20ziua!%20Vin%20de%20pe%20site-ul%20Grădina%20mea." class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-        <span>WhatsApp</span>
+    <a href="https://wa.me/40729075037?text=Buna%20ziua!%20Vin%20de%20pe%20site." class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i> <span>WhatsApp</span>
     </a>
 
     <nav>
@@ -167,126 +179,63 @@
 
     <section class="hero">
         <h1>Jurnalul unei Grădini vii</h1>
-        <p>Sfaturi practice și experiențe direct din inima naturii.</p>
+        <p>Experiențe autentice direct din inima naturii.</p>
     </section>
-
-    <div class="table-of-contents">
-        <h3 style="color: var(--earth);">Cuprins articole:</h3>
-        <div class="toc-grid">
-            <a href="#art-ghid-martie" class="toc-btn"><i class="fas fa-book-open"></i> Ghid Complet Martie</a>
-            <a href="#art-martie" class="toc-btn"><i class="fas fa-seedling"></i> Semănături Martie</a>
-            <a href="#art-rasad" class="toc-btn"><i class="fas fa-seedling"></i> Ghid Răsaduri</a>
-            <a href="#art-taieri" class="toc-btn"><i class="fas fa-cut"></i> Tăieri Pomicultură</a>
-        </div>
-    </div>
 
     <section id="postari">
         <div class="grid">
            
-           <article class="card" id="art-ghid-martie">
+           <article class="card">
                 <span style="color:var(--earth); font-weight:bold;"><i class="far fa-calendar-alt"></i> 2 Martie 2026</span>
-                <h3>Martie în Grădină: Ghidul Complet de la A la Z pentru un Sezon de Succes</h3>
+                <h3>Martie în Grădină: Ghidul Complet de la A la Z</h3>
                 <div class="excerpt">
-                    <p>Luna martie este pragul dintre iarnă și viață. Este momentul în care deciziile luate acum vor dicta abundența recoltei de la vară. Descoperă tot ce trebuie să faci, de la analiza microscopică a solului până la tăierile chirurgicale ale livezii.</p>
+                    <p>Luna martie este pragul dintre iarnă și viață. Este momentul în care deciziile luate acum vor dicta abundența recoltei de la vară...</p>
                 </div>
                 <div class="full-content" id="c-ghid">
-                    <img src="Imagini/gradina in martie.png" class="post-image" alt="Grădina în luna martie">
-                    
+                    <img src="Imagini/gradina in martie.png" class="post-image" alt="Grădina în martie">
                     <h4>I. Fundația: Pregătirea și Însănătoșirea Solului</h4>
                     <p>Pământul este un organism viu, nu doar un suport pentru plante. În martie, prima prioritate este <strong>structura solului</strong>. După dezgheț, solul este adesea tasat. Evită să calci pe straturi pentru a nu distruge porozitatea. Dacă solul tău este argilos, adaugă nisip și materie organică (compost) pentru a îmbunătăți drenajul.</p>
-                    <p>Este momentul ideal pentru a testa pH-ul. Majoritatea legumelor preferă un pH între 6.0 și 7.0. Dacă solul este prea acid, poți adăuga amendamente cu calciu. Nu uita de <strong>fertilizarea de bază</strong>: un strat de 5-10 cm de compost bine descompus va oferi nutrienții necesari fără a "arde" rădăcinile tinere.</p>
-
-                    <h4>II. Semănăturile Timpurii: Cine rezistă la frig?</h4>
-                    <p>Nu toate semințele sunt egale. În martie, ne concentrăm pe plantele care iubesc temperaturile scăzute. Mazărea, de exemplu, are nevoie de frig pentru a nu se "mănoasa" prea repede. Semănați-o la o adâncime de 3-4 cm, în rânduri distanțate la 20 cm.</p>
-                    <p><strong>Spanacul și Loboda:</strong> Acestea sunt campioanele vitaminelor. Spanacul semănat acum va fi gata de recoltat înainte ca dăunătorii de vară să apară. 
-                    <strong>Morcovul și Pătrunjelul:</strong> Secretul germinării lor este umiditatea constantă. Deoarece semințele sunt minuscule, poți să le amesteci cu puțin nisip fin pentru o distribuție uniformă.</p>
-
-                    <h4>III. Tabelul Semănăturilor (Calendar Practic)</h4>
-                    <table style="width:100%; border-collapse: collapse; margin: 20px 0; background: #f9f9f9;">
-                        <tr style="background: var(--nature-green); color: white;">
-                            <th style="padding: 10px; border: 1px solid #ddd;">Cultură</th>
-                            <th style="padding: 10px; border: 1px solid #ddd;">Adâncime Semănat</th>
-                            <th style="padding: 10px; border: 1px solid #ddd;">Distanță Rânduri</th>
-                            <th style="padding: 10px; border: 1px solid #ddd;">Zile Germinare</th>
-                        </tr>
-                        <tr>
-                            <td style="padding: 8px; border: 1px solid #ddd;">Mazăre</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">4 cm</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">20-25 cm</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">7-14 zile</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 8px; border: 1px solid #ddd;">Ridichi de lună</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">1-2 cm</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">10-15 cm</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">4-6 zile</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 8px; border: 1px solid #ddd;">Morcov</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">1 cm</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">20 cm</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">15-20 zile</td>
-                        </tr>
-                    </table>
-
-                    <h4>IV. Livada și Grădina de Flori</h4>
-                    <p>În livadă, bătălia se dă cu bolile fungice care iernează în scoarță. Aplică tratamentele "la albastru" (pe bază de cupru) înainte de desfacerea mugurilor. Acest pas este crucial pentru a preveni <em>Monilia</em> sau <em>Rapanul</em>.</p>
-                    <p>Pentru flori, este timpul să cureți tufele de trandafiri. Taie ramurile care cresc spre interior și scurtează restul ramurilor la 3-4 muguri exteriori. Acest lucru va încuraja o înflorire spectaculoasă în iunie.</p>
-
-                    <h4>V. Managementul Răsadurilor în Interior</h4>
-                    <p>Răsadurile de roșii semănate în februarie au nevoie acum de <strong>repicat</strong>. Când au apărut primele două frunze adevărate, mută-le în ghivece individuale. Acest proces "antrenează" rădăcina să devină mai ramificată și mai puternică. Atenție la "piciorul negru" (o boală a coletului) – asigură-te că nu uzi în exces și că există circulație de aer.</p>
-
-                    <h4>VI. Observarea Naturii: Indicatori Fenologici</h4>
-                    <p>Bătrânii grădinari nu se uitau doar la calendar, ci la natură. Când înflorește forsythia (tufa galbenă), e semn că solul s-a încălzit suficient pentru a semăna sfecla roșie. Când apar primele frunze la mesteacăn, poți începe să te gândești la cartofi.</p>
-                    <p>Așa arata o forsythia pentru cine nu știe</p>
-                    <img src="Imagini/forsythia.jpeg" class="post-image" alt="forsythia">
-                    
-                    <p><i>Concluzie: Martie nu este o cursă, ci un maraton. Fiecare oră petrecută acum în grădină îți va economisi zece ore de muncă în iulie. Bucură-te de acest nou început!</i></p>
+                    <p>Este momentul ideal pentru a testa pH-ul. Majoritatea legumelor preferă un pH între 6.0 și 7.0. Un strat de 5-10 cm de compost bine descompus va oferi nutrienții necesari fără a "arde" rădăcinile tinere.</p>
+                    <h4>II. Semănăturile Timpurii</h4>
+                    <p>Mazărea are nevoie de frig pentru a nu se "mănoasa". Semănați-o la 3-4 cm adâncime. Spanacul și loboda sunt campioanele vitaminelor acum. Morcovul și pătrunjelul necesită umiditate constantă pentru germinare.</p>
+                    <img src="Imagini/forsythia.jpeg" class="post-image" alt="Forsythia">
+                    <p>Când înflorește forsythia (tufa galbenă), e semn că solul s-a încălzit pentru sfecla roșie.</p>
                 </div>
                 <button class="read-more-btn" onclick="togglePost('c-ghid', this)">Citește articolul complet</button>
             </article>
 
-            <article class="card" id="art-martie">
+            <article class="card">
                 <span style="color:var(--earth); font-weight:bold;"><i class="far fa-calendar-alt"></i> 1 Martie 2026</span>
-                <h3>Primele semne de viață în straturi: Calendarul lunii Martie</h3>
-                <div class="excerpt">
-                    <p>Odată cu intrarea în luna martie, grădina trece de la planificare la acțiune în aer liber. Este timpul să profităm de umiditatea solului și să începem semănăturile timpurii.</p>
-                </div>
+                <h3>Primele semne de viață: Calendarul lunii Martie</h3>
+                <div class="excerpt"><p>Martie este luna în care pământul se trezește cu adevărat. Primele plante pot fi semănate direct...</p></div>
                 <div class="full-content" id="c1">
-                    <img src="Imagini/salata in solar.png" class="post-image" alt="Gradina de primavara">
-                    <p>Martie este luna în care pământul se trezește cu adevărat, iar grădinarul trebuie să fie extrem de vigilent. Deși nopțile mai pot aduce înghețuri ușoare, solul păstrează umiditatea prețioasă din zăpezile topite, o condiție ideală pentru așa-numitele culturi „de frig”. Înainte de a scoate uneltele, verificați starea solului: dacă pământul se lipește de cizmă ca lutul, înseamnă că este încă prea ud și trebuie să mai așteptați. Lucrarea unui pământ prea umed distruge structura acestuia, formând bulgări tari care se vor usca precum piatra în timpul verii.</p>
-                    <p>Primele plante care pot fi semănate direct în grădină sunt mazărea, ceapa, usturoiul, morcovul, pătrunjelul și spanacul. Mazărea este vedeta incontestabilă a acestei luni; semințele ei germinează la doar câteva grade peste zero și nu se tem de brumă. Mai mult, mazărea are proprietatea fantastică de a fixa azotul în sol prin nodozitățile de pe rădăcini, pregătind terenul pentru culturile mai pretențioase, precum roșiile, care vor veni în luna mai. Ceapa și usturoiul se plantează acum sub formă de arpagic sau căței, asigurându-vă o recoltă timpurie de verdețuri esențiale.</p>
-                    <p>Tot acum este momentul ideal pentru a semăna ridichile de lună și salata verde. Acestea au un ciclu scurt de vegetație și vă vor oferi primele satisfacții culinare în doar câteva săptămâni de la răsărire. Nu uitați să curățați straturile de eventualele resturi vegetale rămase de anul trecut și să încorporați un strat subțire de compost matur acolo unde solul pare epuizat. Deși munca în luna martie este adesea grea, desfășurându-se în condiții de noroi sau vânt tăios, satisfacția de a vedea primele rânduri verzi aliniate perfect în grădină este bucuria supremă a oricărui om care iubește pământul.</p>
+                    <img src="Imagini/salata in solar.png" class="post-image" alt="Salata">
+                    <p>Deși nopțile mai pot aduce înghețuri, solul păstrează umiditatea prețioasă. Mazărea, ceapa, usturoiul și spanacul sunt primele care intră în pământ. Mazărea fixează azotul, pregătind terenul pentru roșiile din mai. Ceapa și usturoiul plantate acum oferă verdețuri esențiale.</p>
+                    <p>Ridichile de lună au un ciclu scurt și oferă primele satisfacții în câteva săptămâni. Curățați straturile de resturi și adăugați compost matur unde solul este epuizat.</p>
                 </div>
                 <button class="read-more-btn" onclick="togglePost('c1', this)">Citește articolul complet</button>
             </article>
 
-            <article class="card" id="art-rasad">
+            <article class="card">
                 <span style="color:var(--earth); font-weight:bold;"><i class="far fa-calendar-alt"></i> 28 Februarie 2026</span>
-                <h3>Magia răsadurilor: Cum obținem plante viguroase din sămânță</h3>
-                <div class="excerpt">
-                    <p>Februarie este luna în care transformăm interiorul casei într-o mică seră. Succesul recoltei de vară depinde direct de atenția pe care o acordăm acum tinerelor plăntuțe.</p>
-                </div>
+                <h3>Magia răsadurilor: Plante viguroase din sămânță</h3>
+                <div class="excerpt"><p>Februarie transformă casa într-o mică seră. Totul începe cu un substrat de calitate...</p></div>
                 <div class="full-content" id="c2">
-                    <img src="Imagini/rasaduri.png" class="post-image" alt="Rasaduri tinere">
-                    <p>Succesul unei recolte de roșii gustoase sau de ardei cărnoși depinde enorm de vigurozitatea răsadului produs în interior. Totul începe cu alegerea unui substrat de calitate superioară. Pământul obișnuit din grădină este adesea prea dens pentru rădăcinile fine și poate conține microorganisme ce provoacă „căderea plăntuțelor”. Este recomandat să folosiți un amestec special pe bază de turbă fină, care să rețină umezeala, dar care să permită în același timp drenajul și oxigenarea rădăcinilor.</p>
-                    <p>Semănatul necesită o mână ușoară și multă răbdare. Regulă de aur: semințele nu se îngroapă niciodată mai adânc de două ori dimensiunea lor. Odată semănate, tăvițele au nevoie de o temperatură constantă de peste 20 de grade pentru a germina. Marea provocare apare imediat după ce plantele „scot capul”: lumina. Dacă răsadurile încep să se lungească excesiv, devenind subțiri și palide, este un semn clar că nu primesc suficientă lumină. Pentru a preveni etiolarea, rotiți tăvițele zilnic cu 180 de grade și așezați-le în cel mai luminos loc din casă, preferabil pe un pervaz orientat spre sud.</p>
-                    <p>Udarea trebuie făcută cu o finețe extremă. Un jet prea puternic de apă poate scoate semințele din sol sau poate culca la pământ tulpinițele fragile. Folosiți întotdeauna un pulverizator fin și apă la temperatura camerei, lăsată la decantat cel puțin 24 de ore. Apa rece ca gheața, direct de la robinet, provoacă un șoc termic sever care poate bloca creșterea plantei pentru zile întregi. Îngrijirea răsadurilor este un ritual zilnic de observare și disciplină, o lecție de speranță care ne reconectează cu ritmul naturii chiar înainte ca iarna să plece definitiv.</p>
+                    <img src="Imagini/rasaduri.png" class="post-image" alt="Rasaduri">
+                    <p>Folosiți amestecuri pe bază de turbă fină. Regulă de aur: semințele nu se îngroapă mai adânc de două ori dimensiunea lor. Marea provocare este lumina. Dacă se lungesc, rotiți tăvițele zilnic spre fereastră.</p>
+                    <p>Udarea se face cu pulverizator fin și apă decantată la temperatura camerei. Apa rece direct de la robinet șochează rădăcinile fragile.</p>
                 </div>
                 <button class="read-more-btn" onclick="togglePost('c2', this)">Citește articolul complet</button>
             </article>
 
-            <article class="card" id="art-taieri">
+            <article class="card">
                 <span style="color:var(--earth); font-weight:bold;"><i class="far fa-calendar-alt"></i> 27 Februarie 2026</span>
-                <h3>Arta tăierilor de primăvară: Secretul unei livezi roditoare</h3>
-                <div class="excerpt">
-                    <p>Finalul iernii marchează momentul critic pentru tăierile pomilor fructiferi. Află cum să intervii corect pentru a asigura sănătatea și longevitatea livezii tale.</p>
-                </div>
+                <h3>Arta tăierilor: Secretul unei livezi roditoare</h3>
+                <div class="excerpt"><p>Tăierea pomilor nu este estetică, ci o necesitate biologică pentru sănătatea livezii...</p></div>
                 <div class="full-content" id="c3">
-                    <img src="Imagini/taiere la pomi fructiferi.png" class="post-image" alt="taiere la pomi fructiferi">
-                    <p>Tăierea pomilor fructiferi nu este doar o activitate estetică, ci o necesitate biologică. Fără această intervenție, un pom își va risipi resursele prețioase pentru a menține ramuri bătrâne, umbrite sau epuizate, rezultatul fiind o recoltă de fructe mici și o sensibilitate crescută la boli. Primul pas este curățarea sanitară: trebuie să eliminăm fără ezitare ramurile moarte, cele care prezintă răni deschise sau pete suspecte (semne de cancer bacterian sau ciuperci), precum și cele rupte de vânt sau zăpadă. Orice ramură bolnavă lăsată în coroană este o sursă de infecție pentru restul pomului.</p>
-                    <p>Al doilea obiectiv este aerisirea și iluminarea coroanei. O ramură care crește spre interiorul coroanei va umbri alte ramuri și va împiedica circulația aerului, creând un mediu umed favorabil dăunătorilor. De asemenea, lăstarii verticali foarte viguroși, cunoscuți sub numele de „lăcomari”, trebuie tăiați deoarece aceștia nu vor produce niciodată fructe, ci doar vor „fura” seva de la ramurile roditoare. O coroană corect tăiată ar trebui să aibă o structură aerisită, permițând razelor soarelui să ajungă până la baza ramurilor principale.</p>
-                    <p>Calitatea uneltelor dictează viteza de vindecare a pomului. Folosiți doar foarfeci și ferăstraie profesionale, foarte bine ascuțite, pentru a obține tăieturi netede. O tăietură zdrobită este o rană deschisă care se vindecă greu și atrage paraziții. Un detaliu adesea omis, dar vital, este dezinfectarea lamei cu alcool la trecerea de la un pom la altul. Pentru tăierile mai mari de 2-3 centimetri în diametru, aplicați un mastic cicatrizant sau o vopsea pe bază de ulei vegetal pentru a sigila „poarta” împotriva umezelii. Această muncă metodică este, în esență, un dialog cu natura, prin care asigurăm viitorul livezii noastre.</p>
+                    <img src="Imagini/taiere la pomi fructiferi.png" class="post-image" alt="Taiere pomi">
+                    <p>Eliminați ramurile moarte sau bolnave. Aerisirea coroanei permite soarelui să ajungă la bază. Tăiați "lăcomarii" verticali care fură seva. Folosiți unelte ascuțite și dezinfectați lama între pomi pentru a nu transmite boli.</p>
+                    <p>Aplicați mastic cicatrizant pe tăieturile mari pentru a preveni paraziții.</p>
                 </div>
                 <button class="read-more-btn" onclick="togglePost('c3', this)">Citește articolul complet</button>
             </article>
@@ -295,7 +244,7 @@
     </section>
 
     <section id="imagini" style="background: #eef2ee;">
-        <h2 style="text-align: center; color: var(--nature-green);">Galerie Foto</h2>
+        <h2 style="color: var(--nature-green);">Galerie Foto</h2>
         <div class="gallery">
             <img src="Imagini/forsythia.jpeg" onclick="openImg(this.src)"> 
             <img src="Imagini/salata in solar.png" onclick="openImg(this.src)">
@@ -306,7 +255,7 @@
     </section>
 
     <section id="contact">
-        <div style="max-width:600px; margin:auto; background:white; padding:30px; border-radius:25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        <div class="card" style="max-width:600px;">
             <h2 style="text-align:center; color:var(--nature-green);">Contact</h2>
             <form action="https://formspree.io/f/maqdvkpn" method="POST">
                 <input type="text" name="name" style="width:100%; padding:12px; margin:10px 0; border:1px solid #ddd; border-radius:10px;" placeholder="Numele tău" required>
@@ -322,7 +271,10 @@
     <script>
         function togglePost(id, btn) {
             const content = document.getElementById(id);
-            if (content.style.display === "block") {
+            // Verificam stilul calculat pentru siguranta
+            const isHidden = window.getComputedStyle(content).display === "none";
+            
+            if (!isHidden) {
                 content.style.display = "none";
                 btn.textContent = "Citește articolul complet";
             } else {

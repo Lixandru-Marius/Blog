@@ -100,18 +100,36 @@
         }
         .toc-btn:hover { background: var(--nature-green); color: white; }
 
-        section { padding: 40px 5%; }
-        .grid { display: grid; grid-template-columns: 1fr; gap: 50px; max-width: 850px; margin: 0 auto; }
-        .card { background: white; padding: 35px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); scroll-margin-top: 100px; }
+        section { padding: 40px 0%; }
+      .grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 30px; 
+    max-width: 100%; /* Schimbă de la 850px la 100% pentru a ocupa tot ecranul */
+    margin: 0 auto; 
+}
+
+.card { 
+    background: white; 
+    padding: 20px; 
+    border-radius: 20px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+    width: auto; /* Forțează cardul să fie lat */
+    box-sizing: border-box; /* Previne ieșirea din ecran din cauza padding-ului */
+}
+ 
         
        .post-image { 
     width: 60%; 
     max-width: 400px; 
-    height: auto; 
+    height: 250px;       /* Am setat o înălțime fixă mai mică */
+    object-fit: cover;   /* Împiedică deformarea (turtirea) pozei */
     border-radius: 15px; 
     margin: 20px auto; 
     display: block; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+}
+
 }
 
         .full-content { display: none; margin-top: 25px; padding-top: 25px; border-top: 1px dashed #ddd; }

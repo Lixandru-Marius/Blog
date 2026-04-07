@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://lixandru-marius.github.io/Blog/sitemap.xml
 

@@ -12,6 +12,71 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        
+    .arhiva-container details {
+    margin-bottom: 8px;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.arhiva-container summary {
+    cursor: pointer;
+    padding: 8px;
+    color: var(--text);
+    font-size: 0.95rem;
+    list-style: none; /* Ascunde triunghiul standard în unele browsere */
+}
+
+.arhiva-container summary::-webkit-details-marker {
+    display: none; /* Ascunde triunghiul în Safari/Chrome */
+}
+
+/* Adăugăm un mic icon de plus/minus manual pentru aspect de Blogger */
+.arhiva-container summary::before {
+    content: "▶ ";
+    font-size: 0.7rem;
+    color: var(--nature-green);
+    margin-right: 5px;
+}
+
+.arhiva-container details[open] summary::before {
+    content: "▼ ";
+}
+
+.lista-arhiva {
+    list-style: none;
+    padding-left: 25px;
+    margin: 5px 0 15px 0;
+}
+
+.lista-arhiva li {
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.lista-arhiva li::before {
+    content: "•";
+    color: #ccc;
+    position: absolute;
+    left: -15px;
+}
+
+.lista-arhiva a {
+    text-decoration: none;
+    color: var(--nature-green);
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.lista-arhiva a:hover {
+    color: var(--earth);
+    text-decoration: underline;
+}
+   
+     
+        
+        
+     
+        
         :root { --nature-green: #27ae60; --earth: #795548; --bg: #f4f7f4; --card-bg: #ffffff; --text: #2d3436; --accent: #e74c3c; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: var(--text); line-height: 1.8; display: flex; flex-direction: column; align-items: center; }
@@ -108,6 +173,49 @@
         <h1>Jurnalul unei Grădini Vii</h1>
         <p>Ghid tehnic complet pentru primăvara anului 2026</p>
     </section>
+
+
+<section id="arhiva-sectiune" style="background: #fff; padding: 20px 0; border-bottom: 1px solid #eee;">
+    <div class="grid">
+        <div class="card" style="padding: 15px;">
+            <h4 style="color: var(--earth); margin-top: 0;"><i class="fas fa-archive"></i> ARHIVĂ BLOG</h4>
+            <div class="arhiva-container">
+                <details open>
+                    <summary><b>2026 (5)</b></summary>
+                    <ul style="list-style: none; padding-left: 20px;">
+                        <li>
+                            <details open>
+                                <summary>Aprilie (1)</summary>
+                                <ul class="lista-arhiva">
+                                    <li><a href="#c5">• Tehnica „Buzunarului de Aur”</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>Martie (2)</summary>
+                                <ul class="lista-arhiva">
+                                    <li><a href="#art-ghid-martie">• Martie: Ghid Complet A-Z</a></li>
+                                    <li><a href="#art-martie">• Primele semne de viață</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <details>
+                                <summary>Februarie (2)</summary>
+                                <ul class="lista-arhiva">
+                                    <li><a href="#art-rasad">• Magia răsadurilor</a></li>
+                                    <li><a href="#art-taieri">• Arta tăierilor</a></li>
+                                </ul>
+                            </details>
+                        </li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <section id="postari">
         <div class="grid">

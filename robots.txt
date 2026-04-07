@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://lixandru-marius.github.io/Blog/sitemap.xml
+Sitemap: https://Lixandru-Marius.github.io/Blog/sitemap.xml
 

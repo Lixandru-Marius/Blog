@@ -57,6 +57,36 @@
         .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 20px; }
         .gallery img { width: 120px; height: 120px; object-fit: cover; border-radius: 10px; border: 2px solid white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         footer { width: 100%; text-align: center; padding: 30px; background: #2d3436; color: white; margin-top: 40px; }
+    /* Stil pentru imaginea mărită (Modal) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 3000;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+}
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    
     </style>
 </head>
 <body>
@@ -147,8 +177,8 @@
     <section id="imagini" style="background: #eef2ee;">
         <h2>Galerie Foto</h2>
         <div class="gallery">
-            <img src="Imagini/1775536005509.png" alt="Tehnica transplantare 1">
-            <img src="Imagini/1775184953821.png" alt="Tehnica transplantare 2">
+            <img src="Imagini/1775184953821.png" alt="Tehnica transplantare 1">
+            <img src="Imagini/1775536005509.png" alt="Tehnica transplantare 2">
             
             <img src="Imagini/forsythia.jpeg" alt="Forsythia">
             <img src="Imagini/salata in solar.png" alt="Salată solar">
@@ -184,6 +214,21 @@
             }
         }
     </script>
+    <div id="myModal" class="modal" onclick="this.style.display='none'">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="imgFull">
+</div>
+
+<script>
+    // Funcția care deschide imaginea
+    document.querySelectorAll('.gallery img, .post-image').forEach(image => {
+        image.onclick = function() {
+            document.getElementById("myModal").style.display = "block";
+            document.getElementById("imgFull").src = this.src;
+        }
+    });
+</script>
+
 </body>
 </html>
 
